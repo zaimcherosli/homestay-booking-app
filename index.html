@@ -66,6 +66,9 @@
             </nav>
 
             <div class="nav-actions">
+                <button class="btn-install-pwa" id="btnPwaHeaderInstall" style="display: none;">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Pasang App
+                </button>
                 <button class="btn-primary" onclick="scrollToSection('homestays')">
                     <i class="fa-regular fa-calendar-check"></i> Semak Tarikh
                 </button>
@@ -919,6 +922,23 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- PWA Floating Install Banner -->
+    <div class="pwa-floating-banner" id="pwaFloatingBanner">
+        <div class="pwa-banner-left">
+            <img src="icons/icon-192.png" alt="InapVibe Logo" class="pwa-banner-icon">
+            <div>
+                <strong>Aplikasi InapVibe Luxe</strong>
+                <p>Pasang aplikasi ini pada telefon atau desktop anda!</p>
+            </div>
+        </div>
+        <div class="pwa-banner-right">
+            <button class="btn-warning" id="btnPwaBannerInstall">
+                <i class="fa-solid fa-download"></i> Pasang Sekarang
+            </button>
+            <button class="btn-close-pwa" id="btnPwaBannerClose" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
 

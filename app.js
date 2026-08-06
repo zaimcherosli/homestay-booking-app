@@ -882,6 +882,39 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    showToast('Aplikasi InapVibe sedia dipasang pada peranti anda!', 'success');
+    
+    // Show PWA floating banner & header button
+    const banner = document.getElementById('pwaFloatingBanner');
+    if (banner) banner.classList.add('active');
+
+    const headerBtn = document.getElementById('btnPwaHeaderInstall');
+    if (headerBtn) headerBtn.style.display = 'inline-flex';
 });
+
+function triggerPwaInstallPrompt() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                showToast('Terima kasih! Aplikasi InapVibe Berjaya Dipasang.', 'success');
+                const banner = document.getElementById('pwaFloatingBanner');
+                if (banner) banner.classList.remove('active');
+                const headerBtn = document.getElementById('btnPwaHeaderInstall');
+                if (headerBtn) headerBtn.style.display = 'none';
+            }
+            deferredPrompt = null;
+        });
+    } else {
+        showToast('Sila gunakan butang Install di address bar browser anda.', 'warning');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btnPwaBannerInstall')?.addEventListener('click', triggerPwaInstallPrompt);
+    document.getElementById('btnPwaHeaderInstall')?.addEventListener('click', triggerPwaInstallPrompt);
+    document.getElementById('btnPwaBannerClose')?.addEventListener('click', () => {
+        document.getElementById('pwaFloatingBanner')?.classList.remove('active');
+    });
+});
+
 

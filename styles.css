@@ -1938,5 +1938,106 @@ img {
     .search-tool {
         max-width: 100%;
     }
+
+    .pwa-floating-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 80px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px;
+    }
+    .pwa-banner-right {
+        justify-content: space-between;
+    }
 }
+
+
+/* PWA BANNER & BUTTON STYLES */
+.btn-install-pwa {
+    background: linear-gradient(135deg, var(--accent), #b89628);
+    color: var(--dark);
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    transition: var(--transition-fast);
+}
+.btn-install-pwa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.45);
+}
+
+.pwa-floating-banner {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 10000;
+    background: #081c15;
+    color: var(--white);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: var(--radius-lg);
+    padding: 16px 22px;
+    display: none;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    animation: slideUpPwa 0.4s ease;
+}
+.pwa-floating-banner.active {
+    display: flex;
+}
+.pwa-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.pwa-banner-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.pwa-banner-left strong {
+    font-size: 1rem;
+    color: var(--white);
+    display: block;
+}
+.pwa-banner-left p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+.pwa-banner-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.btn-close-pwa {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.btn-close-pwa:hover {
+    background: var(--danger);
+}
+
+@keyframes slideUpPwa {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 
