@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)" />
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d5c3a" />
+      <stop offset="50%" stop-color="#09472d" />
+      <stop offset="100%" stop-color="#081c15" />
+    </linearGradient>
+  </defs>
+  <!-- Gold Accent Inner Glow border -->
+  <rect x="16" y="16" width="480" height="480" rx="84" fill="none" stroke="#d4af37" stroke-width="6" opacity="0.4" />
+  <!-- House Chimney Roof -->
+  <path d="M256 90 L420 235 L376 235 L376 410 C376 422 366 432 354 432 L158 432 C146 432 136 422 136 410 L136 235 L92 235 Z" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Door Accent -->
+  <path d="M226 432 L226 290 C226 276 238 264 256 264 C274 264 286 276 286 290 L286 432" fill="none" stroke="#d4af37" stroke-width="20" stroke-linecap="round" />
+  <!-- Sun/Star Crest -->
+  <circle cx="256" cy="184" r="28" fill="#d4af37" />
+</svg>

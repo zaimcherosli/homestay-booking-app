@@ -867,3 +867,21 @@ function showToast(message, type = 'success') {
         toast.remove();
     }, 4000);
 }
+
+
+// --- PWA SERVICE WORKER REGISTRATION & INSTALL PROMPT ---
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('ServiceWorker registered with scope:', reg.scope))
+            .catch(err => console.log('ServiceWorker registration failed:', err));
+    });
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showToast('Aplikasi InapVibe sedia dipasang pada peranti anda!', 'success');
+});
+
