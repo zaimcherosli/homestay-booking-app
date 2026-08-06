@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InapVibe Luxe Homestay | Servis Homestay Premium & Tempahan Dalam Talian</title>
+    <meta name="description" content="Tempah homestay mewah, selesa & serba lengkap di Malaysia. Kalendar tempahan real-time dengan kunci tarikh automatik.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i class="fa-solid fa-phone"></i> +60 12-345 6789</span>
+                <span><i class="fa-solid fa-envelope"></i> tempahan@inapvibe.my</span>
+                <span><i class="fa-solid fa-location-dot"></i> Port Dickson, Cameron & KL</span>
+            </div>
+            <div class="top-right">
+                <span class="badge-promo"><i class="fa-solid fa-bolt"></i> Diskaun 15% Untuk Hari Bekerja!</span>
+                <button class="btn-top-admin" id="btnOpenAdminLogin">
+                    <i class="fa-solid fa-user-shield"></i> Portal Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="main-header" id="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-house-chimney-window"></i></span>
+                <div class="logo-text">
+                    <span class="brand-name">InapVibe</span>
+                    <span class="brand-tagline">LUXE HOMESTAYS</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">Utama</a>
+                <a href="#homestays" class="nav-link">Senarai Homestay</a>
+                <a href="#facilities" class="nav-link">Kemudahan</a>
+                <a href="#reviews" class="nav-link">Ulasan</a>
+                <a href="#faq" class="nav-link">Soalan Lazim</a>
+                <a href="#contact" class="nav-link">Hubungi</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-primary" onclick="scrollToSection('homestays')">
+                    <i class="fa-regular fa-calendar-check"></i> Semak Tarikh
+                </button>
+                <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="logo-text">
+                <span class="brand-name">InapVibe</span>
+                <span class="brand-tagline">LUXE HOMESTAYS</span>
+            </div>
+            <button class="btn-close-drawer" id="closeDrawerBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="#hero" class="drawer-link"><i class="fa-solid fa-house"></i> Utama</a>
+            <a href="#homestays" class="drawer-link"><i class="fa-solid fa-hotel"></i> Senarai Homestay</a>
+            <a href="#facilities" class="drawer-link"><i class="fa-solid fa-wifi"></i> Kemudahan</a>
+            <a href="#reviews" class="drawer-link"><i class="fa-solid fa-star"></i> Ulasan Pelanggan</a>
+            <a href="#faq" class="drawer-link"><i class="fa-solid fa-circle-question"></i> Soalan Lazim</a>
+            <a href="#contact" class="drawer-link"><i class="fa-solid fa-headset"></i> Hubungi</a>
+            <hr>
+            <button class="btn-secondary w-100" id="btnOpenAdminLoginMobile">
+                <i class="fa-solid fa-lock"></i> Log Masuk Admin
+            </button>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-award"></i> Rangkaian Homestay Terbaik 2026
+            </div>
+            <h1 class="hero-title">Percutian Sempurna & Selesa Bersama Keluarga Anda</h1>
+            <p class="hero-subtitle">Nikmati penginapan homestay mewah dilengkapi kolam renang peribadi, Wi-Fi berkelajuan tinggi, dan kemudahan lengkap. Tempahan pantas & kunci tarikh automatik.</p>
+            
+            <!-- Quick Availability Search Bar -->
+            <div class="search-box-wrapper">
+                <form class="search-box" id="quickSearchForm">
+                    <div class="search-field">
+                        <label><i class="fa-solid fa-location-dot"></i> Pilihan Homestay</label>
+                        <select id="searchPropertySelect" class="form-select">
+                            <option value="all">Semua Homestay</option>
+                        </select>
+                    </div>
+
+                    <div class="search-field">
+                        <label><i class="fa-solid fa-calendar-days"></i> Tarikh Check-In</label>
+                        <input type="date" id="searchCheckIn" class="form-input">
+                    </div>
+
+                    <div class="search-field">
+                        <label><i class="fa-solid fa-calendar-check"></i> Tarikh Check-Out</label>
+                        <input type="date" id="searchCheckOut" class="form-input">
+                    </div>
+
+                    <div class="search-field">
+                        <label><i class="fa-solid fa-users"></i> Bilangan Tetamu</label>
+                        <select id="searchGuests" class="form-select">
+                            <option value="1-4">1 - 4 Tetamu</option>
+                            <option value="5-8" selected>5 - 8 Tetamu</option>
+                            <option value="9-12">9 - 12 Tetamu</option>
+                            <option value="13+">13+ Tetamu (Rombongan)</option>
+                        </select>
+                    </div>
+
+                    <div class="search-btn-field">
+                        <button type="submit" class="btn-search">
+                            <i class="fa-solid fa-magnifying-glass"></i> Cari & Semak
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Advantages Features Grid -->
+    <section class="features-bar-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+                    <div class="feature-text">
+                        <h4>Lock Tarikh Real-Time</h4>
+                        <p>Tarikh yang ditempah terus dikunci supaya tiada pertindihan tempahan.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-water-ladder"></i></div>
+                    <div class="feature-text">
+                        <h4>Kolam Renang Peribadi</h4>
+                        <p>Khas untuk privasi keluarga anda tanpa gangguan orang luar.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-broom"></i></div>
+                    <div class="feature-text">
+                        <h4>Pembersihan Sanitisasi</h4>
+                        <p>Dibersihkan & disanitasi penuh sebelum setiap check-in.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="feature-text">
+                        <h4>Sokongan Host 24/7</h4>
+                        <p>Talian bantuan terus via WhatsApp untuk sebarang urusan bantuan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Homestay Listings Section -->
+    <section class="section homestays-section" id="homestays">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">PILIHAN POPULAR</span>
+                <h2 class="section-title">Senarai Unit Homestay Eksklusif</h2>
+                <p class="section-desc">Pilih homestay yang memenuhi impian percutian anda. Klik 'Tempah Sekarang' untuk semak jadual tarikh yang masih available!</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons" id="filterContainer">
+                <button class="btn-filter active" data-filter="all">Semua Unit</button>
+                <button class="btn-filter" data-filter="villa">Villa & Kolam</button>
+                <button class="btn-filter" data-filter="chalet">Chalet & Gunung</button>
+                <button class="btn-filter" data-filter="loft">Urban Loft</button>
+                <button class="btn-filter" data-filter="traditional">Rumah Kampung Modern</button>
+            </div>
+
+            <!-- Homestay Cards Grid -->
+            <div class="homestay-grid" id="homestayGrid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Calendar Preview Section -->
+    <section class="section calendar-preview-section">
+        <div class="container">
+            <div class="calendar-preview-card">
+                <div class="calendar-preview-info">
+                    <span class="badge-accent"><i class="fa-solid fa-shield-halved"></i> Jaminan Ketepatan Tarikh</span>
+                    <h2>Sistem Semakan Tarikh & Locking Automatik</h2>
+                    <p>Sistem kami dikemaskini secara automatik setiap kali ada tempahan baharu atau kunci tarikh khas oleh pentadbir homestay. Tiada lagi masalah double-booking!</p>
+                    
+                    <ul class="status-legend-list">
+                        <li><span class="dot available"></span> <strong>Hijau:</strong> Tarikh Tersedia (Available)</li>
+                        <li><span class="dot booked"></span> <strong>Merah / Kelabu:</strong> Tarikh Telah Dikunci (Booked / Locked)</li>
+                        <li><span class="dot selected"></span> <strong>Emas:</strong> Pilihan Tarikh Anda</li>
+                    </ul>
+
+                    <div class="preview-cta">
+                        <button class="btn-primary" onclick="scrollToSection('homestays')">
+                            <i class="fa-solid fa-calendar-days"></i> Pilih Homestay & Semak Kalendar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="calendar-mockup-wrapper">
+                    <div class="mockup-header">
+                        <span><i class="fa-solid fa-circle text-danger"></i> <i class="fa-solid fa-circle text-warning"></i> <i class="fa-solid fa-circle text-success"></i> Status Kalendar Homestay Real-Time</span>
+                    </div>
+                    <div class="mockup-body" id="calendarMockupBody">
+                        <!-- Simulated Interactive mini calendar view -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities / Amenities Showcase -->
+    <section class="section facilities-section bg-alt" id="facilities">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">KEMUDAHAN LENGKAP</span>
+                <h2 class="section-title">Semua Yang Anda Perlukan Ada Di Sini</h2>
+                <p class="section-desc">Setiap homestay direka untuk memberikan keselesaan taraf hotel 5 bintang dengan kebebasan suasana rumah sendiri.</p>
+            </div>
+
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-water-ladder"></i></div>
+                    <h3>Kolam Renang Peribadi</h3>
+                    <p>Kolam khas untuk dewasa & kanak-kanak dengan pagar keselamatan & kawasan santai.</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-wifi"></i></div>
+                    <h3>Wi-Fi 500Mbps</h3>
+                    <p>Kelajuan internet pantas sesuai untuk workcation, streaming 4K & gaming.</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                    <h3>Dapur Lengkap & BBQ</h3>
+                    <p>Dapur gas, microwave, penapis air Coway/Cuckoo, dan set grill BBQ luar rumah.</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-snowflake"></i></div>
+                    <h3>Pendingin Hawa Penuh</h3>
+                    <p>Semua bilik tidur dan ruang tamu dilengkapi penghawa dingin berkuasa tinggi.</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-tv"></i></div>
+                    <h3>Smart TV & Netflix</h3>
+                    <p>Skren TV 65 inci dilengkapi akaun Netflix percuma & Soundbar Bluetooth.</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon"><i class="fa-solid fa-square-parking"></i></div>
+                    <h3>Parkir Luas & Berpagar</h3>
+                    <p>Kawasan tempat letak kereta berpagar automatik yang memuatkan sehingga 4-6 buah kenderaan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Ulasan Pelanggan -->
+    <section class="section testimonials-section" id="reviews">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">ULASAN GUEST</span>
+                <h2 class="section-title">Apa Kata Mereka Yang Pernah Menginap?</h2>
+                <p class="section-desc">Lebih 1,500+ tetamu telah menikmati pengalaman percutian impian bersama kami.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Sangat puashati! Kolam renang bersih giler, bilik tidur sejuk dan tilam empuk. Paling penting sistem tempahan online dia sangat cepat & tarikh terus dikunci bila lepas bayar."</p>
+                    <div class="reviewer-info">
+                        <div class="avatar">AZ</div>
+                        <div>
+                            <h4>Ahmad Zulkarnain</h4>
+                            <span>Menginap di Bayu Laut Villa (Keluarga 10 pax)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Suasana di Chalet Puncak Rimba sangat tenang. BBQ set dah disediakan, tinggal bawa bahan je. Host sangat responsif dalam WhatsApp bila kami perlukan bantuan."</p>
+                    <div class="reviewer-info">
+                        <div class="avatar">SN</div>
+                        <div>
+                            <h4>Siti Nurhaliza M.</h4>
+                            <span>Menginap di Puncak Rimba Chalet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Servis terbaik. Saya guna portal admin pun mudah untuk cek semula tempahan saya. Tempat parking luas, keselamatan terjamin."</p>
+                    <div class="reviewer-info">
+                        <div class="avatar">KT</div>
+                        <div>
+                            <h4>Khairul Taufik</h4>
+                            <span>Menginap di D'Villages Kampung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section bg-alt" id="faq">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">SOALAN LAZIM</span>
+                <h2 class="section-title">Pertanyaan Biasa Pelanggan</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Pukul berapa waktu Check-In dan Check-Out?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Waktu standard Check-In adalah jam 3:00 Petang dan Check-Out pada jam 12:00 Tengahari. Permohonan Early Check-In atau Late Check-Out bergantung kepada ketersediaan unit dan kelulusan admin.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimanakah sistem locking tarikh berfungsi?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sebaik sahaja anda mengisi maklumat dan mengesahkan tempahan, tarikh check-in hingga check-out anda akan terus bertukar ke status **LOCKED** di dalam sistem kami secara automatik. Ini menghalang pengguna lain daripada membuat tempahan pada tarikh yang sama.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Adakah deposit keselamatan diperlukan?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, deposit keselamatan sebanyak RM100 (refundable) diperlukan semasa pengesahan tempahan atau check-in dan akan dipulangkan sepenuhnya dalam tempoh 24 jam selepas check-out sekiranya tiada kerosakan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Adakah makanan halal dibenarkan di dalam homestay?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Semua homestay kami adalah mesra-Muslim. Hanya makanan & minuman Halal sahaja yang dibenarkan di dalam premis dan peralatan memasak.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <span class="section-tag">HUBUNGI KAMI</span>
+                    <h2>Ada Pertanyaan Khas Atau Rombongan Besar?</h2>
+                    <p>Hubungi pengurusan homestay kami terus melalui WhatsApp atau panggilan telefon untuk tempahan khas, acara perkahwinan, atau percutian syarikat.</p>
+                    
+                    <div class="contact-details">
+                        <div class="c-detail">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Hotline</strong>
+                                <p>+60 12-345 6789 (Respons Pantas)</p>
+                            </div>
+                        </div>
+
+                        <div class="c-detail">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>E-mel Pengurusan</strong>
+                                <p>support@inapvibe.my</p>
+                            </div>
+                        </div>
+
+                        <div class="c-detail">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>Waktu Operasi Bantuan</strong>
+                                <p>8:00 AM - 11:00 PM (Isnin - Ahad)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/60123456789?text=Halo%20Admin%20InapVibe,%20saya%20nak%20tanya%20tentang%20homestay" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp Sekarang
+                    </a>
+                </div>
+
+                <div class="contact-map-card">
+                    <div class="map-placeholder">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <h3>Lokasi Utama Homestay Kami</h3>
+                        <p>Lokasi strategik berdekatan pantai, pusat bandar KL, & pusat percutian tanah tinggi Cameron Highlands.</p>
+                        <div class="location-chips">
+                            <span><i class="fa-solid fa-umbrella-beach"></i> Port Dickson</span>
+                            <span><i class="fa-solid fa-mountain"></i> Cameron Highlands</span>
+                            <span><i class="fa-solid fa-city"></i> Kuala Lumpur</span>
+                            <span><i class="fa-solid fa-tree"></i> Janda Baik</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo text-white">
+                        <span class="logo-icon"><i class="fa-solid fa-house-chimney-window"></i></span>
+                        <div class="logo-text">
+                            <span class="brand-name">InapVibe</span>
+                            <span class="brand-tagline">LUXE HOMESTAYS</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">Penyedia perkhidmatan homestay mewah & berhati murni terbesar di Malaysia. Pilihan utama percutian keluarga & acara istimewa.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Pautan Pantas</h4>
+                    <ul>
+                        <li><a href="#hero">Utama</a></li>
+                        <li><a href="#homestays">Senarai Homestay</a></li>
+                        <li><a href="#facilities">Kemudahan</a></li>
+                        <li><a href="#reviews">Ulasan Pelanggan</a></li>
+                        <li><a href="#faq">Soalan Lazim</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Lokasi Popular</h4>
+                    <ul>
+                        <li><a href="#homestays">Bayu Laut Villa (Port Dickson)</a></li>
+                        <li><a href="#homestays">Puncak Rimba Chalet (Cameron)</a></li>
+                        <li><a href="#homestays">Urban Glass Loft (KL City)</a></li>
+                        <li><a href="#homestays">D'Villages Kampung (Melaka)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Akses Admin</h4>
+                    <p>Khusus untuk pengurus premis untuk mengunci tarikh, menyemak bayaran & menguruskan rekod tempahan tetamu.</p>
+                    <button class="btn-outline-light" id="btnOpenAdminLoginFooter">
+                        <i class="fa-solid fa-lock"></i> Log Masuk Mod Admin
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 InapVibe Luxe Homestays Sdn Bhd. Hak Cipta Terpelihara. Rekabentuk Kemas & Responsive.</p>
+                <div class="footer-legal">
+                    <a href="#">Terma & Syarat</a>
+                    <a href="#">Dasar Privasi</a>
+                    <a href="#">Polisi Pembatalan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/60123456789?text=Halo%20Admin%20InapVibe,%20saya%20butuh%20bantuan%20tempahan" target="_blank" class="floating-whatsapp" title="Bantuan WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <!-- MODALS SECTION -->
+
+    <!-- 1. CUSTOMER BOOKING & DATE LOCK MODAL -->
+    <div class="modal-backdrop" id="bookingModal">
+        <div class="modal-box modal-lg">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="badge-accent" id="modalCategoryBadge">VILLA & KOLAM</span>
+                    <h3 id="modalHomestayTitle">Resort Bayu Laut Villa</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> <span id="modalHomestayLocation">Port Dickson, Negeri Sembilan</span></p>
+                </div>
+                <button class="btn-close-modal" onclick="closeModal('bookingModal')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="booking-grid">
+                    <!-- Left: Details & Dynamic Calendar -->
+                    <div class="booking-left">
+                        <div class="modal-gallery">
+                            <img id="modalHomestayImg" src="" alt="Homestay Preview" class="modal-main-img">
+                        </div>
+
+                        <div class="modal-specs">
+                            <div class="spec-item"><i class="fa-solid fa-bed"></i> <span id="modalSpecBeds">4 Bilik Tidur</span></div>
+                            <div class="spec-item"><i class="fa-solid fa-bath"></i> <span id="modalSpecBaths">3 Bilik Air</span></div>
+                            <div class="spec-item"><i class="fa-solid fa-users"></i> <span id="modalSpecGuests">Maks 10 Tetamu</span></div>
+                            <div class="spec-item"><i class="fa-solid fa-star text-warning"></i> <span id="modalSpecRating">4.9 (48 Ulasan)</span></div>
+                        </div>
+
+                        <!-- Calendar Date Selector with LOCK Indicator -->
+                        <div class="calendar-container">
+                            <div class="calendar-header-bar">
+                                <h4><i class="fa-solid fa-calendar-days"></i> Pilih Tarikh Menginap</h4>
+                                <span class="calendar-month-title" id="calendarMonthTitle">Ogos 2026</span>
+                            </div>
+
+                            <div class="calendar-info-banner">
+                                <i class="fa-solid fa-circle-info"></i> Tarikh bertanda <span class="badge-locked-demo">LOCKED / DITEMPAH</span> telah dikunci dan tidak boleh dipilih.
+                            </div>
+
+                            <!-- Calendar Grid -->
+                            <div class="interactive-calendar" id="interactiveCalendar">
+                                <!-- Generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Pricing Calculator & Form -->
+                    <div class="booking-right">
+                        <div class="price-box">
+                            <div class="price-tag">
+                                <span class="currency">RM</span>
+                                <span class="amount" id="modalPricePerNight">650</span>
+                                <span class="per-night">/ malam</span>
+                            </div>
+                        </div>
+
+                        <form id="bookingSubmitForm">
+                            <input type="hidden" id="formHomestayId" value="">
+                            
+                            <div class="date-selection-inputs">
+                                <div class="form-group">
+                                    <label><i class="fa-solid fa-calendar-minus"></i> Tarikh Check-In</label>
+                                    <input type="date" id="formCheckIn" class="form-input" required readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label><i class="fa-solid fa-calendar-plus"></i> Tarikh Check-Out</label>
+                                    <input type="date" id="formCheckOut" class="form-input" required readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-user"></i> Nama Penuh Pelanggan</label>
+                                <input type="text" id="formCustomerName" class="form-input" placeholder="Cth: Muhammad Amirul" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-phone"></i> Nombor Telefon (WhatsApp)</label>
+                                <input type="tel" id="formCustomerPhone" class="form-input" placeholder="Cth: 0123456789" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-envelope"></i> Alamat E-mel</label>
+                                <input type="email" id="formCustomerEmail" class="form-input" placeholder="amirul@gmail.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-wallet"></i> Kaedah Pembayaran (Demo)</label>
+                                <select id="formPaymentMethod" class="form-select">
+                                    <option value="FPX Online Banking">FPX Online Banking (Maybank/CIMB/RHB)</option>
+                                    <option value="DuitNow QR Pay">DuitNow QR Instant Pay</option>
+                                    <option value="Kad Kredit / Debit">Kad Kredit / Debit (Visa/Mastercard)</option>
+                                </select>
+                            </div>
+
+                            <!-- Dynamic Bill Calculation -->
+                            <div class="bill-summary" id="billSummary">
+                                <div class="bill-line">
+                                    <span>Kadar (RM<span id="billRate">650</span> x <span id="billNights">0</span> malam)</span>
+                                    <span>RM <span id="billSubtotal">0</span></span>
+                                </div>
+                                <div class="bill-line">
+                                    <span>Cukai SST & Yuran Servis (5%)</span>
+                                    <span>RM <span id="billTax">0</span></span>
+                                </div>
+                                <div class="bill-line">
+                                    <span>Deposit Keselamatan (Refundable)</span>
+                                    <span>RM <span id="billDeposit">100</span></span>
+                                </div>
+                                <hr>
+                                <div class="bill-total">
+                                    <strong>JUMLAH KESELURUHAN:</strong>
+                                    <strong class="total-amount">RM <span id="billGrandTotal">0</span></strong>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-confirm-booking" id="btnSubmitBooking">
+                                <i class="fa-solid fa-lock"></i> Sahkan & Kunci Tarikh Tempahan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 2. SUCCESSFUL BOOKING RECEIPT MODAL -->
+    <div class="modal-backdrop" id="receiptModal">
+        <div class="modal-box modal-md text-center">
+            <div class="receipt-success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2>Tempahan Berjaya & Tarikh Dikunci!</h2>
+            <p class="receipt-sub">Terima kasih. Tarikh pilihan anda telah dikunci secara automatik di dalam sistem.</p>
+
+            <div class="receipt-card">
+                <div class="receipt-row">
+                    <span>Kod Rujukan Booking:</span>
+                    <strong class="receipt-code" id="recBookingCode">HSV-982341</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Homestay:</span>
+                    <strong id="recHomestayName">Bayu Laut Villa</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Tarikh Check-In:</span>
+                    <strong id="recCheckIn">2026-08-10</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Tarikh Check-Out:</span>
+                    <strong id="recCheckOut">2026-08-12</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Nama Tetamu:</span>
+                    <strong id="recGuestName">Amirul</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Jumlah Bayaran:</span>
+                    <strong class="text-success" id="recTotalAmount">RM 1,465.00</strong>
+                </div>
+            </div>
+
+            <div class="receipt-actions">
+                <a href="#" id="recWhatsappBtn" target="_blank" class="btn-whatsapp w-100">
+                    <i class="fa-brands fa-whatsapp"></i> Hantar Resit Ke WhatsApp Admin
+                </a>
+                <button class="btn-secondary w-100 mt-2" onclick="closeModal('receiptModal')">Tutup Window</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 3. ADMIN LOGIN MODAL -->
+    <div class="modal-backdrop" id="adminLoginModal">
+        <div class="modal-box modal-sm">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="badge-admin"><i class="fa-solid fa-user-shield"></i> PENTADBIR SYSTEM</span>
+                    <h3>Log Masuk Portal Admin</h3>
+                </div>
+                <button class="btn-close-modal" onclick="closeModal('adminLoginModal')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> ID Pengguna / Username</label>
+                        <input type="text" id="adminUsername" class="form-input" value="admin" required>
+                        <small class="text-muted">Default: <code>admin</code></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-key"></i> Katalaluan / Password</label>
+                        <input type="password" id="adminPassword" class="form-input" value="admin123" required>
+                        <small class="text-muted">Default: <code>admin123</code></small>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-100 mt-3">
+                        <i class="fa-solid fa-right-to-bracket"></i> Log Masuk Ke Dashboard
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 4. FULL ADMIN WORKSPACE DASHBOARD MODAL -->
+    <div class="modal-backdrop" id="adminDashboardModal">
+        <div class="modal-box modal-xl admin-workspace">
+            <div class="admin-topbar">
+                <div class="admin-branding">
+                    <i class="fa-solid fa-sliders text-accent"></i>
+                    <div>
+                        <h3>Pengurusan Booking & Kunci Tarikh Homestay</h3>
+                        <span>InapVibe Admin Portal v2.6</span>
+                    </div>
+                </div>
+                <div class="admin-user-badge">
+                    <span class="badge-status-online"><i class="fa-solid fa-circle text-success"></i> Admin Active</span>
+                    <button class="btn-danger-sm" id="btnAdminLogout">
+                        <i class="fa-solid fa-power-off"></i> Log Keluar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats Summary -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="stat-icon bg-success-light"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div>
+                        <span class="stat-label">Jumlah Hasil Tempahan</span>
+                        <h3 class="stat-value" id="adminStatRevenue">RM 14,250</h3>
+                    </div>
+                </div>
+
+                <div class="admin-stat-card">
+                    <div class="stat-icon bg-primary-light"><i class="fa-solid fa-bookmark"></i></div>
+                    <div>
+                        <span class="stat-label">Jumlah Tempahan</span>
+                        <h3 class="stat-value" id="adminStatTotalBookings">18</h3>
+                    </div>
+                </div>
+
+                <div class="admin-stat-card">
+                    <div class="stat-icon bg-warning-light"><i class="fa-solid fa-lock"></i></div>
+                    <div>
+                        <span class="stat-label">Tarikh Dikunci (Locked)</span>
+                        <h3 class="stat-value" id="adminStatLockedDates">12 Hari</h3>
+                    </div>
+                </div>
+
+                <div class="admin-stat-card">
+                    <div class="stat-icon bg-purple-light"><i class="fa-solid fa-percent"></i></div>
+                    <div>
+                        <span class="stat-label">Kadar Okupansi</span>
+                        <h3 class="stat-value">84.5%</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Nav Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="tabBookings"><i class="fa-solid fa-list-check"></i> Senarai Tempahan Tetamu</button>
+                <button class="tab-btn" data-tab="tabDateLock"><i class="fa-solid fa-calendar-xmark"></i> Pengurus Kunci Tarikh (Date Lock Manager)</button>
+                <button class="tab-btn" data-tab="tabProperties"><i class="fa-solid fa-hotel"></i> Kadar Harga Homestay</button>
+            </div>
+
+            <!-- Admin Tab Contents -->
+            <div class="admin-tab-content">
+
+                <!-- TAB 1: BOOKING MANAGEMENT TABLE -->
+                <div class="tab-pane active" id="tabBookings">
+                    <div class="table-tools">
+                        <div class="search-tool">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="adminSearchBooking" placeholder="Cari nama pelanggan, telefon, atau kod rujukan..." class="form-input">
+                        </div>
+                        <div class="filter-tool">
+                            <select id="adminStatusFilter" class="form-select">
+                                <option value="all">Semua Status</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Kod Ref</th>
+                                    <th>Pelanggan</th>
+                                    <th>Homestay Unit</th>
+                                    <th>Tarikh Check-In/Out</th>
+                                    <th>Malam</th>
+                                    <th>Jumlah (RM)</th>
+                                    <th>Bayaran</th>
+                                    <th>Status</th>
+                                    <th>Tindakan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminBookingsTableBody">
+                                <!-- Injected via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: MANUAL DATE LOCK MANAGER -->
+                <div class="tab-pane" id="tabDateLock">
+                    <div class="date-lock-workspace">
+                        <div class="date-lock-form-card">
+                            <h4><i class="fa-solid fa-lock text-warning"></i> Kunci Tarikh Baharu (Manual Block)</h4>
+                            <p class="text-sm">Gunakan borang ini untuk sekat tarikh tertentu daripada dipilih pengguna (cth: kerja penyelenggaraan, kegunaan pemilik, dsb).</p>
+                            
+                            <form id="adminManualLockForm">
+                                <div class="form-group">
+                                    <label>Pilih Unit Homestay</label>
+                                    <select id="lockPropertySelect" class="form-select" required></select>
+                                </div>
+
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label>Mula Sekatan (Check-In)</label>
+                                        <input type="date" id="lockStartDate" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tamat Sekatan (Check-Out)</label>
+                                        <input type="date" id="lockEndDate" class="form-input" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sebab Kunci Tarikh</label>
+                                    <input type="text" id="lockReason" class="form-input" placeholder="Cth: Penyelenggaraan Kolam / Owner Stay" required>
+                                </div>
+
+                                <button type="submit" class="btn-warning w-100">
+                                    <i class="fa-solid fa-lock"></i> Sahkan & Sekat Tarikh Ini
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="date-lock-list-card">
+                            <h4><i class="fa-solid fa-list text-primary"></i> Senarai Tarikh Yang Dikunci Admin</h4>
+                            <div class="table-responsive">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Homestay</th>
+                                            <th>Dari Tarikh</th>
+                                            <th>Hingga Tarikh</th>
+                                            <th>Sebab Sekatan</th>
+                                            <th>Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminLockedDatesTableBody">
+                                        <!-- Injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: PROPERTY LISTINGS MANAGER -->
+                <div class="tab-pane" id="tabProperties">
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Gambar</th>
+                                    <th>Nama Homestay</th>
+                                    <th>Kategori</th>
+                                    <th>Lokasi</th>
+                                    <th>Kadar (RM/malam)</th>
+                                    <th>Kapasiti Tetamu</th>
+                                    <th>Status Unit</th>
+                                    <th>Tindakan Kemaskini</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminPropertiesTableBody">
+                                <!-- Injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
